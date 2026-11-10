@@ -1,0 +1,58 @@
+TRUST, SCOPE, AND VERIFICATION STATUS
+
+This is a source release. Release preparation checked archive structure,
+dependency metadata, local imports, source integrity, and documentation.
+No fresh Lean compilation or Lake build was performed for this release.
+Successful compilation and the exact axiom dependencies of public theorems
+have not been certified by this release audit.
+
+Static source scan
+
+The scan found no sorry, admit, project axiom declarations, or unsafe
+declarations in the packaged Lean files. This is a source-text check, not a
+compiled proof or axiom audit. Dependencies are external packages pinned by
+the included manifests and are not covered by this source-only scan.
+
+Three uses of native_decide occur in the packaged sources:
+
+1. TreeGraph/TreeGraph/FinalTheorem.lean:25937
+   Within finrank_ker_childBoundaryCoefficientMap_singleton_edge_child_n_two,
+   a finite sum of vertex weights for a fixed small tree is evaluated as 1.
+
+2. Core3loop/No16/OddCase.lean:408
+   Within q_bPref_cPref_formula_of_odd, the fact x * x = x is checked for
+   each element of the two-element field.
+
+3. Core3loop/No16/OddCase.lean:2321
+   Within oddRectCoeff_eq_zero_or_one, ZMod.val (1 : F) = 1 is evaluated
+   for the two-element field.
+
+native_decide uses compiled evaluation and therefore has a different trust
+profile from proof terms checked solely by the kernel. These finite checks
+are not themselves all-parameter evaluations of the graph formulas. Their
+presence in an imported file does not establish that every public theorem
+depends on them. After building, use #print axioms on each theorem of
+interest to inspect its actual transitive axiom dependencies. This release
+makes no claim that every endpoint has only a particular standard axiom set.
+
+Mathematical scope
+
+The declarations and explicit hypotheses in the Lean sources determine the
+precise theorem scope. The Core4 corrected raw endpoints concern the binary
+field F2 finite-assignment model; the paper-facing corrected statements for
+Triangle plus leaf, Diamond, and K4 require n >= 2 and positive block sizes.
+Internal theorems may have different or stronger hypotheses and conclusions.
+See each project's README for its entry points.
+
+The raw Delta = 2^X results do not, by themselves, formalize the physical
+contraction-to-assignment correspondence or connected-support subtraction
+needed to obtain the paper's Gamma_H functions. This package does not claim
+a Lean-certified derivation of those paper/model bridges from the raw
+endpoints. Historical exponent definitions are retained for provenance;
+use the corrected public endpoints identified in the Core4loop README.
+
+Integrity
+
+SHA256SUMS records the packaged files' contents. A passing hash check detects
+changes relative to that manifest; it does not prove mathematical validity,
+successful compilation, or the identity of the publisher.

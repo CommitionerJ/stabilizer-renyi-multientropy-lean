@@ -1,0 +1,20 @@
+Core2 source package
+
+Lean/Lake: 4.29.0. Main import: Core2. Main file: Core2.lean.
+Proof source: Core2/CombinatorialAssignments.lean.
+Build from this directory with the supplied dependency lock:
+  lake build Core2
+
+Principal declarations, in namespace FormalMathLab.CombinatorialAssignments:
+  card_validAssignments
+  signed_imbalance_user
+For natural n with [NeZero n] and positive a,b, these give the number of valid
+F2 assignments and the two-block signed sum. Exact formulas and import guidance
+are in ../THEOREM_MAP.txt.
+
+Prerequisites, pinned dependency setup, and checksum commands: ../BUILDING.txt.
+No compilation was performed for this packaging revision; see ../VERIFICATION.txt.
+Licensing status: ../REUSE_NOTICE.txt.
+Lean sources are unchanged. Required source count: 2 files, 850 physical lines
+(including blank lines and comments). No dependency checkouts or build outputs
+are included.

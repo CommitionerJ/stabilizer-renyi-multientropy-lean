@@ -1,0 +1,3 @@
+# Preserve the exact source snapshot and checksum bytes on every platform.
+# In particular, do not convert Lean files to CRLF during checkout.
+* -text

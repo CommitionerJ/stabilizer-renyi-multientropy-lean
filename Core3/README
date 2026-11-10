@@ -1,0 +1,22 @@
+Core3 source package
+
+The directory is Core3; the Lean package and import root are Core3tree.
+The principal declarations use namespace No13Migration, not Core3tree.
+Lean/Lake: 4.29.0. Main file: Core3tree.lean.
+Proof source: Core3tree/No13_abc_general.lean.
+Build from this directory with the supplied dependency lock:
+  lake build Core3tree
+
+Canonical declarations, in namespace No13Migration:
+  card_validAssignments_abc_final
+  card_survivingBC_abc_final_closed
+  signed_imbalance_abc_final_closed
+They concern the generalized three-block tree/No13 finite-assignment model over
+F2, with natural n, [NeZero n], and positive a,b,c. The final signed-sum object
+is deltaABCraw_final. Exact formulas and API paths are in ../THEOREM_MAP.txt.
+
+Prerequisites, pinned dependency setup, and checksum commands: ../BUILDING.txt.
+No compilation was performed for this packaging revision; see ../VERIFICATION.txt.
+Licensing status: ../REUSE_NOTICE.txt.
+Lean sources are unchanged. Required source count: 2 files, 6,365 physical lines
+(including blank lines and comments). No external local checkout is required.

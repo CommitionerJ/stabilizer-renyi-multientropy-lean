@@ -1,0 +1,56 @@
+Build instructions for the frozen source snapshot
+
+Prerequisites
+  Git, network access to the dependency repositories, and elan with Lean/Lake.
+  All five lean-toolchain files select leanprover/lean4:v4.29.0.
+  Running a Lean/Lake command through elan may download that toolchain.
+  Run commands in a terminal from the stated package directory.
+
+Dependencies
+  mathlib is pinned to commit 8a178386ffc0f5fef0b77738bb5449d50efeea95
+  (the v4.29.0 snapshot). Each lake-manifest.json also records exact transitive
+  dependency commits. Preserve these manifests and the package configurations.
+  Normal reproduction uses lake build with the supplied lock. Lake retrieves
+  missing dependencies; it does not require a bundled .lake directory.
+  Do not run lake update or delete the manifest as part of this frozen workflow.
+  Updating dependencies is a separate compatibility exercise.
+
+Archive integrity, from the archive root before building
+  macOS:       shasum -a 256 -c SHA256SUMS
+  GNU/Linux:   sha256sum -c SHA256SUMS
+
+Build each package
+  The following parenthesized commands run from the archive root and preserve
+  the terminal's current directory:
+
+  (cd Core2 && lake build Core2)
+  (cd Core3 && lake build Core3tree)
+  (cd TreeGraph && lake build TreeGraph)
+  (cd Core3loop && lake build Core3loop)
+  (cd Core4loop && lake build Core4loop)
+  (cd Core4loop && lake build +Core4loop.Square.Rank.CombinedRank)
+
+The final command explicitly builds the square's unconditional final theorem.
+Core4loop.lean imports the other three corrected endpoints, but not that square
+module. The '+' explicitly selects a Lake module target. Core4loop depends on
+../Core3loop, so keep those directories beside each other. The commands above
+also build Core3loop as an independent package for its own release check.
+
+Optional download of matching mathlib compiled cache
+  In a selected package directory, lake exe cache get can retrieve mathlib's
+  cache for the pinned dependency snapshot before the full package build.
+  This is an acceleration option, not an additional proof assumption. It needs
+  network access and may compile the cache tool. Source builds remain available
+  without a downloaded cache. No cache or build output is shipped here.
+
+Reading and importing results
+  Use the modules and fully qualified declarations listed in THEOREM_MAP.txt.
+  After dependencies have built, an individual existing source may be checked
+  with lake env lean followed by its relative .lean path. Such a direct Lean
+  invocation does not build missing imported modules; use lake build first.
+
+Verification status
+  These are instructions for recipients. No lake build, Lean compilation,
+  dependency download, or cache retrieval was run for this packaging revision.
+  Static file/import checks are not a substitute for a successful clean build.
+  See VERIFICATION.txt for the checks actually performed.

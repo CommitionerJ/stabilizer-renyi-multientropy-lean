@@ -1,0 +1,20 @@
+SOURCE REUSE AND THIRD-PARTY DEPENDENCIES
+
+SPDX-License-Identifier: MIT
+
+The project owner authorized public copying, modification, and redistribution.
+The project source and accompanying release documentation are provided under
+the MIT License in LICENSE. Preserve that notice when redistributing copies
+or substantial portions. The contributor attribution is intentionally neutral;
+no private account name or local filesystem identity is required for reuse.
+
+Lean, Lake, mathlib, and the other dependencies listed in the manifests are
+not bundled here. They retain their own licenses and copyright notices. The
+project license does not relicense third-party material. Existing notices in
+the supplied source, if any, remain in force.
+
+This source-code license is distinct from the license selected for a paper
+at arXiv submission. This package does not choose or change the paper license.
+See ARXIV_NOTES.txt for submission pointers and CITATION.txt for attribution.
+
+Reference: https://opensource.org/license/mit

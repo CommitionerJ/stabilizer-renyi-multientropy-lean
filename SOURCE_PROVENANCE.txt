@@ -1,0 +1,84 @@
+SOURCE SNAPSHOT AND RELEASE PROVENANCE
+
+Source snapshot label: 2026-08-04
+Previous publication-packaging revision: 2026-10-13
+Previous root directory: Lean_Formalization_Source_20260804
+Previous distribution filename:
+  Lean_Formalization_Source_20260804_Release_20261013.zip
+
+Original input archive SHA-256:
+  96866dc565cded238b9dc97ca03de0ffb7c3ee2a6950931c7025feb19bee9e0f
+Original input archive size: 1,969,298 bytes
+
+This revision preserves all 635 original .lean files byte-for-byte and at
+their original relative paths. PROOF_SOURCE_SHA256SUMS records their hashes
+from the input archive. There are 320,868 physical Lean source lines, counting
+blank lines and comments; lakefile.toml is not included in that count.
+
+Project       Lean files     Physical Lean lines
+Core2                 2                     850
+Core3                 2                   6,365
+TreeGraph           154                 105,384
+Core3loop            45                  31,227
+Core4loop           432                 177,042
+
+Non-proof changes in the 2026-10-13 packaging revision:
+- Expand the root and project documentation, entry-point and scope guidance.
+- Add the MIT License and provenance, trust, and arXiv submission notes.
+- Correct the manifest root names to Core2, Core3tree, and TreeGraph in the
+  Core2, Core3, and TreeGraph folders respectively.
+- Pin each lakefile.toml mathlib revision and matching manifest inputRev to
+  8a178386ffc0f5fef0b77738bb5449d50efeea95, the commit already locked by the
+  original manifests. No resolved dependency revision is changed.
+- Regenerate file checksums and add a read-only integrity verifier.
+
+The Lean toolchain and all other dependency metadata are preserved. There is
+no Git history in this release; no production commit identity is asserted.
+No existing project, proof source, or original input archive was edited.
+No new build or theorem compilation is claimed; see VERIFICATION.txt.
+
+GitHub preparation revision: 2026-10-19
+Previous root directory: Lean_Formalization_GitHub_20261019
+Previous distribution filename: Lean_Formalization_GitHub_20261019.zip
+Input to the 2026-10-19 revision (2026-10-13 release) SHA-256:
+  af46784b3f754b4163305f24087b254a9e7d8c0bcaed889b838c7a7cda8ae896
+
+GitHub-only changes:
+- Add .gitignore and byte-preserving .gitattributes.
+- Add GitHub upload/privacy/version guidance and a recognized CITATION file.
+- Allow the integrity verifier to run in a Git clone while still checking
+  the shipped Git configuration files and rejecting unexpected artifacts.
+- Update release documentation and SHA256SUMS.
+
+All 635 .lean files, all five package configurations, toolchains, dependency
+manifests, and LICENSE are identical to the 2026-10-13 release. The original
+proof-source hash baseline is preserved. No remote repository or Git history
+is included, and no upload or compilation is claimed.
+
+Paper-metadata revision: 2026-10-20
+Current root directory: Lean_Formalization_GitHub_20261020
+Current distribution filename: Lean_Formalization_GitHub_20261020.zip
+Immediate input (2026-10-19 release) SHA-256:
+  305b9b5e5fcb702057ed50add66473643f35a95f58a21f2faa23c81371dc179e
+
+The project owner supplied the paper title, ordered author list, ORCIDs,
+affiliation markers, and the fact that arXiv submission has not yet occurred.
+These were added to the release documentation and citation files, including
+an unpublished-manuscript BibTeX entry. No affiliation institution names,
+publication year, arXiv identifier, DOI, or repository URL were inferred.
+SHA256SUMS was regenerated. No Lean sources, package configurations,
+toolchains, dependency locks, verifier code, or license text were changed.
+
+arXiv and repository-address revision: 2026-11-10
+
+Immediate input: Lean_Formalization_GitHub_20261020.zip and its extracted
+source-only release. The 635 Lean files, package configurations, toolchains,
+dependency manifests, verifier, and LICENSE remain unchanged.
+The public paper record https://arxiv.org/abs/2610.26814 now supplies the
+arXiv identifier, year, subject class, and arXiv-issued DOI. These replace
+the historical pre-submission wording in the current citation documents.
+The authorized republication target is:
+  https://github.com/CommitionerJ/stabilizer-renyi-multientropy-lean
+Only publication documents and the complete-file checksum manifest change.
+The original PROOF_SOURCE_SHA256SUMS baseline is preserved. No compilation
+or change to theorem scope is claimed, and no previous Git history is copied.

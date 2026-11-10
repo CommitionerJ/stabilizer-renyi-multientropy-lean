@@ -1,0 +1,73 @@
+Lean formalization source collection
+
+Source snapshot: 2026-08-04
+GitHub packaging revision: 2026-11-10 (based on the 2026-10-20 publication package)
+
+Repository
+  https://github.com/CommitionerJ/stabilizer-renyi-multientropy-lean
+
+Associated paper
+  Rényi Multi-entropy for Stabilizer States: A Finite Field Gauss Sum Problem
+  arXiv:2610.26814 [hep-th] (2026)
+  https://arxiv.org/abs/2610.26814
+  DOI: https://doi.org/10.48550/arXiv.2610.26814
+
+Paper authors, in the supplied order:
+  Bartłomiej Czech  https://orcid.org/0000-0002-6368-3502
+  Yichen Feng      https://orcid.org/0009-0003-2816-2714
+  Jonathan Harper  https://orcid.org/0000-0003-4913-6470
+  Xin-Xiang Ju     https://orcid.org/0000-0002-9905-3908
+  Yang Zhao        https://orcid.org/0009-0004-3492-1892
+
+The paper title, author order, arXiv identifier, and arXiv-issued DOI were
+checked against the public arXiv record on 2026-11-10. Version 1 was submitted
+on 2026-10-19. An arXiv preprint is not a claim of journal acceptance.
+
+This archive contains five Lean 4 source packages for binary finite-assignment
+models and related graph formulas. See THEOREM_MAP.txt for exact public theorem
+names, assumptions, and limits of the claims. The release documentation and
+portable dependency metadata were revised without changing the Lean sources.
+
+Contents
+  Core2      Two-block assignment and signed-sum formulas.
+  Core3      The Core3tree package; generalized three-block tree formulas.
+  TreeGraph  Weighted rooted-tree model formulas and raw-source interfaces.
+  Core3loop  Three-block triangle signed-sum formula, including parity cases.
+  Core4loop  Square, triangle plus leaf, diamond, and complete graph K4.
+
+Each directory has its own README, lean-toolchain, lakefile.toml, and
+lake-manifest.json. Core3 is the archive directory name; its Lean package and
+import root are Core3tree, and its principal theorem namespace is No13Migration.
+TreeGraph includes its required Core2 and Core3tree sources locally. Core4loop
+requires the sibling Core3loop directory; preserve the relative folder layout.
+
+Publish all five folders together, with this README at the repository root.
+There is no root Lake package. See GITHUB_UPLOAD.txt for the upload checklist,
+commit-identity privacy, and release/version guidance. Git-based upload is
+recommended; do not upload only the ZIP in place of the extracted sources.
+
+Start with BUILDING.txt for prerequisites, pinned dependency setup, and build
+commands. No compilation was performed for this packaging revision. The static
+checks and their limits are recorded in VERIFICATION.txt. SHA256SUMS records
+the packaged file contents; verification commands are in BUILDING.txt.
+
+The Core4 endpoints evaluate raw finite-assignment signed sums over F2. Their
+corrected exponents must be distinguished from the retained historical ones.
+This archive does not certify the manuscript's contraction-to-assignment bridge
+or its Core4 proper-support/Gamma extraction as part of those endpoints.
+TreeGraph's general raw-assignment statements have explicit certificate
+hypotheses; they must not be presented as unconditional arbitrary-tree results.
+
+The archive excludes dependency checkouts, compiled Lake artifacts, temporary
+probes, and work reports. Source counts include blank and comment lines and may
+include shared code in more than one package.
+
+The source release uses the MIT License in LICENSE; see REUSE_NOTICE.txt for
+reuse details. SOURCE_PROVENANCE.txt records the source binding. CITATION.txt
+and ARXIV_NOTES.txt describe citation and arXiv submission considerations.
+The root CITATION file identifies the paper; CITATION.txt includes its ORCIDs
+and citation guidance. CITATION.bib supplies an arXiv-preprint BibTeX
+entry. Paper authorship does not change the MIT notice or assign Git commit
+authorship. Cite an exact repository commit for source reproducibility.
+For questions after publication, use the repository's Issues if enabled.
+No hosted build workflow or successful-CI badge is included in this snapshot.

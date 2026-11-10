@@ -1,0 +1,21 @@
+Core3loop source package
+
+Lean/Lake: 4.29.0. Main import/file: Core3loop / Core3loop.lean.
+Public facade: Core3loop/Main.lean.
+The required No16 modules are included.
+Build from this directory with the supplied dependency lock:
+  lake build Core3loop
+
+Principal theorem: Core3loop.DeltaABC_closed_by_cases_main.
+For natural n with [NeZero n] and positive a,b,c, it evaluates the F2 triangle
+finite-assignment signed sum. The special exponent applies exactly when n is
+even and all three blocks are at least two. The theorem and its companion
+card_validAssignments_abc_main are mapped in ../THEOREM_MAP.txt.
+
+Keep this directory beside Core4loop: that package uses ../Core3loop as a
+relative local dependency.
+Prerequisites, pinned dependency setup, and checksum commands: ../BUILDING.txt.
+No compilation was performed for this packaging revision; see ../VERIFICATION.txt.
+Licensing status: ../REUSE_NOTICE.txt.
+Lean sources are unchanged. Required source count: 45 files, 31,227 physical
+lines (including blank lines and comments). Build products are excluded.

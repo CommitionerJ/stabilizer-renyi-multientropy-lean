@@ -1,0 +1,26 @@
+Lean formalization source collection
+
+Five projects: Core2, Core3, TreeGraph, Core3loop, and Core4loop.
+Source snapshot: 2026-08-04. GitHub packaging revision: 2026-11-10.
+License: MIT.
+Repository: https://github.com/CommitionerJ/stabilizer-renyi-multientropy-lean
+
+For reproducibility, identify the public repository URL and exact commit or
+release tag when citing this source collection. See CITATION.txt for the
+available provenance and the distinction from a citation of the paper.
+
+Associated manuscript:
+  Bartłomiej Czech, Yichen Feng, Jonathan Harper, Xin-Xiang Ju, and Yang Zhao.
+  Rényi Multi-entropy for Stabilizer States: A Finite Field Gauss Sum Problem.
+  arXiv:2610.26814 [hep-th] (2026).
+  https://arxiv.org/abs/2610.26814
+  https://doi.org/10.48550/arXiv.2610.26814
+
+The public arXiv record was checked on 2026-11-10. Version 1 was submitted
+on 2026-10-19. The ORCIDs were supplied by the project owner. No journal
+acceptance is asserted. See CITATION.bib for BibTeX and CITATION.txt for the
+authors' ORCIDs and full citation guidance.
+
+To cite the formalization sources, use the repository URL above and an exact
+commit or release tag, separately from the paper's arXiv citation. The arXiv
+DOI identifies the paper, not an immutable version of this code collection.

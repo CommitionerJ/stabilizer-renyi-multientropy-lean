@@ -1,0 +1,97 @@
+PUBLISHING THE FIVE PROJECTS AS ONE GITHUB REPOSITORY
+
+Republication preparation: 2026-11-10.
+Authorized repository: CommitionerJ/stabilizer-renyi-multientropy-lean
+Paper: https://arxiv.org/abs/2610.26814
+This document describes the source package and upload procedure; remote
+publication success must be checked separately. No Lean/Lake compilation
+was run for this republication.
+
+Repository layout
+
+Use the contents of this extracted directory as the repository root:
+  README, LICENSE, .gitignore, .gitattributes, documentation and checksums
+  Core2/
+  Core3/
+  TreeGraph/
+  Core3loop/
+  Core4loop/
+
+There is intentionally no root Lake package. The five package configurations
+stay in their own folders. Follow BUILDING.txt for each package; preserve the
+Core4loop -> ../Core3loop relationship. Do not move or flatten the sources.
+Upload the actual extracted files, not only the ZIP. A ZIP may additionally
+be attached to a GitHub release. No Git LFS is needed for this snapshot.
+
+Before publication
+
+1. Choose a public repository name and account. If double-blind submission
+   rules apply, check them before making the repository public.
+2. Create an EMPTY GitHub repository: do not ask GitHub to add a second README,
+   license, or .gitignore. Use this package's existing files.
+3. Verify this clean directory before building:
+     python3 verify_release.py
+   This needs Python >= 3.11. Alternatively:
+     shasum -a 256 -c SHA256SUMS
+   The script ignores only the root Git administrative entry (.git) and
+   permits the two shipped Git configuration files. It still rejects build
+   output or unexpected hidden payload. Use a clean clone for the strict
+   script after development. Checksums do not authenticate the publisher.
+4. Check your Git author name and email BEFORE the first commit. Git commits
+   publish them independently of file content. Use your intended public
+   author name and the exact GitHub-provided noreply address from your account
+   email settings if you do not want to expose a personal email address.
+   A GitHub account/repository name is itself public; choose it deliberately.
+
+Suggested Git workflow
+
+Open a terminal in THIS extracted directory, not in a parent project folder.
+Replace the uppercase placeholders below with your chosen public values.
+Do not copy an older project's .git directory or history into this directory.
+
+  git init -b main
+  git config --local user.name "YOUR_PUBLIC_NAME"
+  git config --local user.email "YOUR_GITHUB_NOREPLY_EMAIL"
+  git add -- .
+  git status --short
+  git diff --cached --stat
+  git diff --cached
+
+Review the staged files; no .lake, credentials, local paths, or build products
+should be included. Then, only when you intend to publish:
+
+  git commit -m "Publish Lean formalization source snapshot"
+  git remote add origin https://github.com/OWNER/REPOSITORY.git
+  git push -u origin main
+
+GitHub Desktop can perform the same workflow. A Git-based upload preserves
+the supplied attribute rules and avoids the browser's batch-file limits.
+No private account identity, configured repository remote, or authentication token
+is stored in those commands; the remote is an example URL placeholder.
+The supplied paper authors and ORCIDs are intentional public bibliographic
+metadata in README and the citation files, not private machine identities.
+
+After publication / before citing the repository in the paper
+
+- Confirm that the root README and LICENSE are visible and all five folders
+  appear at the root. Check the exact commit shown by GitHub.
+- Make a release/tag for the source version cited in the paper. Record that
+  version and its URL; a moving default branch is not an immutable reference.
+- The paper title, five authors, ORCIDs, and manuscript BibTeX are already
+  supplied in README, CITATION, CITATION.txt, and CITATION.bib.
+- The repository URL and verified arXiv:2610.26814 metadata are supplied in
+  the root README and citation files. Record an exact source commit or tag
+  when citing the code. The paper DOI is not a code-release DOI.
+- Existing paper versions or arXiv comments may cite the former repository
+  address. Update those separately if appropriate; a new GitHub publication
+  does not automatically change the paper or its submission metadata.
+- If release files are intentionally changed, regenerate SHA256SUMS and repeat
+  integrity checking before making a new release. PROOF_SOURCE_SHA256SUMS is
+  the original proof-source baseline, not a manifest to silently overwrite.
+- CI is optional. This package adds no workflow that would trigger compilation
+  or download dependencies, and it displays no unverified build badge.
+
+GitHub references consulted for this preparation:
+https://docs.github.com/en/get-started/git-basics/ignoring-files
+https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository
+https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-citation-files

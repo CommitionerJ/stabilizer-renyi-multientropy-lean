@@ -1,0 +1,47 @@
+Core4loop source package
+
+Lean/Lake: 4.29.0. Main import/file: Core4loop / Core4loop.lean.
+Required sibling dependency: ../Core3loop. Preserve that relative layout.
+Build from this directory with the supplied dependency locks:
+  lake build Core4loop
+  lake build +Core4loop.Square.Rank.CombinedRank
+
+Final proof entry points and fully qualified declarations
+  Square: Core4loop/Square/Rank/CombinedRank.lean
+    Core4loop.DeltaNF_square_closed
+  Triangle plus leaf: Core4loop/TriangleLeaf/CorrectedFacade.lean
+    Core4loop.TriangleLeaf.DeltaNF_triangleLeaf_eq_pow_X1CorrectedZ
+  Diamond: Core4loop/SquareDiagonal/CorrectedFacade.lean
+    Core4loop.SquareDiagonal.DeltaNF_squareDiagonal_eq_pow_X3CorrectedZ
+  K4: Core4loop/CompleteGraph/CorrectedFinal.lean
+    Core4loop.DeltaNF_complete_eq_pow_X4CorrectedZ
+
+The square result needs import Core4loop.Square.Rank.CombinedRank; import
+Core4loop alone does not expose that unconditional endpoint. The other three
+corrected endpoints are imported by Core4loop.lean.
+
+These are raw finite-assignment signed-sum evaluations over F2 (logical level
+7: DeltaNF = 2^X). All four block sizes are positive. The three corrected
+endpoints assume natural n, [NeZero n], and 2 <= n. The square theorem is
+stronger in n and requires only [NeZero n].
+
+Use X1CorrectedZ, X3CorrectedZ, and X4CorrectedZ for the respective final
+results. Historical X1Z/X3Z/X4Z and PaperOld definitions remain for provenance;
+they are not interchangeable with the corrected exponents. Provenance is in
+TriangleLeaf/CorrectedExponent.lean, SquareDiagonal/CorrectedProvenance.lean,
+and CompleteGraph/CorrectedProvenance.lean, under the Core4loop source folder.
+The exact statements and their scope are in ../THEOREM_MAP.txt.
+
+This release does not add or certify Core4 proper-support/Gamma extraction or
+the manuscript contraction-to-assignment bridge. A raw endpoint is not itself
+a theorem about those additional layers.
+
+Prerequisites, pinned dependency setup, and checksum commands: ../BUILDING.txt.
+No compilation was performed for this packaging revision; see ../VERIFICATION.txt.
+Licensing status: ../REUSE_NOTICE.txt.
+Lean sources are unchanged. Required source count: 432 files, 177,042 physical
+lines, including blank lines and comments. Graph-owned lines are disjoint:
+Square 6,916; triangle plus leaf 35,235; diamond 92,945; K4 33,735.
+The remaining lines are shared or top-level sources. Full local theorem import
+closures overlap: square 11,598; triangle plus leaf 44,979; diamond 143,048;
+K4 87,359. These closure totals must not be added together.

@@ -1,0 +1,28 @@
+TreeGraph source package
+
+Lean/Lake: 4.29.0. Main import/file: TreeGraph / TreeGraph.lean.
+Principal facade: TreeGraph/FinalTheorem.lean.
+The required Core2 and Core3tree libraries are included locally.
+Build from this directory with the supplied dependency lock:
+  lake build TreeGraph
+
+Scope of the final API (namespace TreeGraph.RawPrimitive):
+  tree_imbalance_delta_final_closed evaluates DeltaTreeModel for rooted trees
+  with PositiveWeights and natural n with [NeZero n].
+  tree_imbalance_raw_final_closed and tree_imbalance_signed_final_closed also
+  require an explicit CompleteFormalization certificate. Do not omit it when
+  describing the general raw-assignment result.
+  tree_imbalance_raw_expanded_edge_sum_verifiedShape_closed instead requires
+  VerifiedShape; the constructors in TreeGraph/VerifiedShapes.lean cover a
+  positive leaf, edge, or three-vertex star.
+
+See ../THEOREM_MAP.txt for exact declarations and the distinction between the
+recursive model formula and raw-source correspondence. This package's general
+raw theorems must not be described as unconditional arbitrary-tree proofs.
+
+Prerequisites, pinned dependency setup, and checksum commands: ../BUILDING.txt.
+No compilation was performed for this packaging revision; see ../VERIFICATION.txt.
+Licensing status: ../REUSE_NOTICE.txt.
+Lean sources are unchanged. Required source count: 154 files, 105,384 physical
+lines (including blank lines and comments). Build products and work reports
+are excluded.

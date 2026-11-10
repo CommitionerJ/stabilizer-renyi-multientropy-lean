@@ -1,0 +1,44 @@
+# Lake dependency checkouts and generated build output, at every depth.
+.lake/
+build/
+*.olean
+*.ilean
+*.olean.*
+*.trace
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+
+# Operating-system and editor metadata.
+.DS_Store
+._*
+__MACOSX/
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Private environment, agent, and credential configuration.
+.env
+.env.*
+.codex/
+.agents/
+.aws/
+.ssh/
+*.pem
+*.key
+
+# Publish release archives as release assets, not duplicated repository files.
+*.zip
+*.tar.gz
+
+# Keep all .lean files, lakefile.toml, lean-toolchain, and lake-manifest.json.

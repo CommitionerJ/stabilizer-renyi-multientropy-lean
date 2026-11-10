@@ -1,0 +1,83 @@
+RELEASE CHECKS AND THEIR LIMITS
+
+This is a source-only publication audit. At the owner's request, no Lean
+compiler invocation, Lake build, dependency fetch, or compiled axiom audit
+was performed while preparing this revision. The documented build commands
+are for recipients; their inclusion is not a claim of a fresh successful build.
+
+Checks performed:
+- Test the original and final ZIP CRCs and inspect archive entry paths.
+- Verify the original input SHA256SUMS and regenerated release checksums.
+- Compare every .lean file to the original input: identical paths and bytes.
+- Inspect the five package configurations, toolchains, and locked revisions.
+- Resolve local Lean imports statically against the included source layout,
+  respecting the Core4loop sibling dependency on Core3loop. No missing local
+  module was identified. This is not Lean import elaboration.
+- Inspect README entry points against the actual source declarations.
+- Scan text and archive metadata for private local-account identifiers,
+  machine-specific paths, credentials, unwanted hidden metadata, and build artifacts.
+  No such private identifiers or artifacts were found in the final package.
+- Record native_decide occurrences and theorem-scope limitations in
+  TRUST_AND_SCOPE.txt. No compiled axiom set is asserted.
+
+The original ZIP had valid integrity data and no detected private paths. It
+lacked a license and root release guide; three manifest root package names
+were inconsistent with their lakefile.toml. Those non-proof issues are fixed
+in this copy. Root-name inconsistency alone was not established to cause a
+build failure. No missing Lean source was identified by the static review.
+
+To repeat the file-integrity check without compiling anything, use Python
+3.11 or newer from the extracted release root:
+  python3 verify_release.py
+
+Alternatively, verify the complete file manifest using either command:
+  sha256sum -c SHA256SUMS
+  shasum -a 256 -c SHA256SUMS
+
+SHA256SUMS covers every distributed regular file except itself.
+PROOF_SOURCE_SHA256SUMS covers only the unchanged original Lean files.
+Hashes detect changes relative to the supplied manifest; they are not a
+digital signature and do not authenticate the publisher. Static scans do
+not guarantee the absence of every conceivable privacy or correctness issue.
+This packaging audit is not arXiv acceptance or mathematical certification.
+
+GitHub preparation (2026-10-19)
+
+The current revision rechecks archive integrity and the unchanged source
+baseline, and adds only publication docs and Git housekeeping files. The root
+.gitignore and .gitattributes are intentional, checksummed release files.
+The verifier excludes a root .git directory or administrative file so that
+a clean Git checkout can be verified. This exception is not a review of Git
+history, author names, email addresses, or remotes. Check those separately
+before publishing as described in GITHUB_UPLOAD.txt. No .git entry is shipped.
+
+No GitHub upload, hosted CI run, Lean compilation, or Lake build was performed.
+
+An isolated temporary Git repository was used only for local packaging tests:
+all 672 release files remain addable; representative dependency, build, and
+private-configuration paths are ignored; Git text conversion is disabled;
+and the verifier passes with root .git metadata present. Mocked negative
+tests reject a bad source hash and unexpected hidden build metadata without
+editing any Lean file. No test commit or remote was created.
+
+Paper-metadata revision (2026-10-20)
+
+Title, author order, spellings, ORCIDs, and affiliation markers were compared
+with the project owner's supplied LaTeX author block. All five ORCID check
+digits pass; this is not independent identity verification. The paper is
+described as an unpublished manuscript, with no assigned arXiv identifier
+or DOI claimed. The source repository is intended to be published first.
+The release now contains 673 files, including CITATION.bib. All 635 Lean
+files and all package configurations, dependency locks, toolchains, verifier
+code, and LICENSE remain byte-identical to the 2026-10-19 release. Integrity
+and privacy scans were repeated; no Lean/Lake compilation was performed.
+
+Republication metadata revision (2026-11-10)
+
+The paper title and five authors match the public arXiv:2610.26814 record.
+The current citation documents include its identifier, 2026 year, hep-th
+subject class, arXiv-issued DOI, and the authorized CommitionerJ repository
+address. The older dated paragraphs above describe historical packaging
+steps, not the current publication status. For this revision, the unchanged
+proof-source manifest and package inventory are checked again, and the
+complete-file manifest is regenerated. No Lean/Lake build is run.

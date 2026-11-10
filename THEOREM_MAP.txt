@@ -1,0 +1,128 @@
+Public theorem map and scope
+
+Paths below are relative to the archive root. Names and hypotheses were read
+from the included Lean declarations. This map does not claim a new compilation
+or axiom audit; see VERIFICATION.txt. n and block sizes are natural numbers.
+[NeZero n] means n is nonzero. F2 is the two-element field ZMod 2.
+
+Core2
+  Import: Core2
+  Source: Core2/Core2/CombinatorialAssignments.lean
+  Namespace: FormalMathLab.CombinatorialAssignments
+  card_validAssignments
+    [NeZero n], 0<a, 0<b:
+    card (ValidAssignments a b n) = 2^(n^b + n^a).
+  signed_imbalance_user
+    [NeZero n], 0<a, 0<b:
+    deltaCore (n:=n) (a-1) (b-1) = (2:Int)^(n^a+n^b-(n-1)).
+  The namespace prefix above is part of each fully qualified theorem name.
+
+Core3 (Lean package/import root Core3tree)
+  Import: Core3tree
+  Source: Core3/Core3tree/No13_abc_general.lean
+  Namespace: No13Migration
+  card_validAssignments_abc_final
+    [NeZero n], 0<a, 0<b, 0<c:
+    card (ABCValidAssignmentsFinal a b c n)
+      = 2^(n^(b+c)+n^(a+c)+n^(a+b)).
+  signed_imbalance_abc_final_closed
+    With the same assumptions:
+    deltaABCraw_final a b c n = (2:Int)^E, where the Nat exponent E is
+    n^(a+b)+n^(a+c)+n^(b+c)-n^(c+1)-n^(b+1)+n^c+n^b+(n-1)^2.
+  card_survivingBC_abc_final_closed gives the corresponding surviving-kernel
+  cardinality. The finalized objects use primitive raw validity, an honest
+  surviving kernel, and the raw signed sum. Natural subtraction is truncated;
+  the notation above follows the exact source order.
+
+TreeGraph
+  Import: TreeGraph
+  Sources: TreeGraph/TreeGraph/FinalTheorem.lean and
+    TreeGraph/TreeGraph/VerifiedShapes.lean
+  Namespace for the following names: TreeGraph.RawPrimitive
+  tree_imbalance_delta_final_closed
+    T : TreeGraph.RTree, RTree.PositiveWeights T, n : Nat, [NeZero n]:
+    DeltaTreeModel n T = (2:Int)^Int.toNat(assignmentFactorProductExponent n T).
+    This evaluates the recursive model object.
+  tree_imbalance_raw_final_closed
+    Has the SAME tree/n assumptions AND h : CompleteFormalization:
+    rawBitStringSignedSum n T
+      = (2:Int)^Int.toNat(assignmentFactorProductExponent n T).
+  tree_imbalance_signed_final_closed
+    Has the SAME assumptions INCLUDING h : CompleteFormalization and evaluates
+    RawNormal.signedSum n T instead.
+  tree_imbalance_raw_expanded_edge_sum_verifiedShape_closed
+    Requires hT : VerifiedShape T and [NeZero n]; it evaluates the literal
+    expanded edge-phase sum over raw assignments realized by the normal form.
+    VerifiedShape has exactly positive leaf, edge, and three-vertex-star
+    constructors in VerifiedShapes.lean.
+  The general raw statements above are conditional on their stated certificate.
+  CompleteFormalization is a Prop structure in
+  TreeGraph/TreeGraph/Completion.lean; its
+  name is not a claim that an arbitrary-tree certificate has been supplied.
+  Other interfaces offer node-rule or model-certificate hypotheses; preserve
+  those hypotheses in any downstream claim.
+
+Core3loop
+  Import: Core3loop
+  Source: Core3loop/Core3loop/Main.lean
+  Core3loop.card_validAssignments_abc_main
+    [NeZero n], positive a,b,c: counts ValidAssignmentsABC.
+  Core3loop.DeltaABC_closed_by_cases_main
+    [NeZero n], positive a,b,c:
+    DeltaABC a b c n equals (2:Int)^evenSpecialDeltaExponent a b c n
+    when Even n and 2<=a,b,c; otherwise it equals
+    (2:Int)^genericDeltaExponent a b c n.
+  These concern the triangle finite-assignment model, not the three-block tree.
+
+Core4loop: square
+  Import: Core4loop.Square.Rank.CombinedRank
+  Source: Core4loop/Core4loop/Square/Rank/CombinedRank.lean
+  Core4loop.DeltaNF_square_closed
+    [NeZero n], positive a,b,c,d:
+    DeltaNF .square a b c d n = (2:Int)^Int.toNat(X2Z a b c d n).
+  Build this module explicitly; it is not imported by Core4loop.lean.
+
+Core4loop: triangle plus leaf
+  Import: Core4loop.TriangleLeaf.CorrectedFacade (also imported by Core4loop)
+  Source: Core4loop/Core4loop/TriangleLeaf/CorrectedFacade.lean
+  Core4loop.TriangleLeaf.DeltaNF_triangleLeaf_eq_pow_X1CorrectedZ
+    [NeZero n], 2<=n, positive a,b,c,d:
+    DeltaNF .triangleLeaf a b c d n
+      = (2:Int)^Int.toNat(X1CorrectedZ a b c d n).
+  In Core4loop/Core4loop/TriangleLeaf/CorrectedExponent.lean:
+    X1CorrectedZ = X1PaperOldZ - TriangleLeafCorrectionZ.
+    X1PaperOldZ retains the historical X1Z formula.
+
+Core4loop: diamond (square-diagonal, K4 with one edge removed)
+  Import: Core4loop.SquareDiagonal.CorrectedFacade (also in Core4loop)
+  Source: Core4loop/Core4loop/SquareDiagonal/CorrectedFacade.lean
+  Core4loop.SquareDiagonal.DeltaNF_squareDiagonal_eq_pow_X3CorrectedZ
+    [NeZero n], 2<=n, positive a,b,c,d:
+    DeltaNF .squareDiagonal a b c d n
+      = (2:Int)^Int.toNat(X3CorrectedZ a b c d n).
+  Core4loop.X3CorrectedZ_eq_X3PaperOldZ_add_DiamondCorrectionZ
+    With the same assumptions, relates X3CorrectedZ a b c d n to
+    X3PaperOldZ a b c d n + DiamondCorrectionZ n a b c d.
+    Source: Core4loop/Core4loop/SquareDiagonal/CorrectedProvenance.lean.
+
+Core4loop: complete graph K4
+  Import: Core4loop.CompleteGraph.CorrectedFinal (also in Core4loop)
+  Source: Core4loop/Core4loop/CompleteGraph/CorrectedFinal.lean
+  Core4loop.DeltaNF_complete_eq_pow_X4CorrectedZ
+    [NeZero n], 2<=n, positive a,b,c,d:
+    DeltaNF .complete a b c d n
+      = (2:Int)^Int.toNat(X4CorrectedZ a b c d n).
+  Core4loop.X4CorrectedZ_eq_X4PaperOldZ_add_K4CorrectionZ
+    With the same assumptions, relates X4CorrectedZ a b c d n to
+    X4PaperOldZ a b c d n + K4CorrectionZ n a b c d.
+    Source: Core4loop/Core4loop/CompleteGraph/CorrectedProvenance.lean.
+
+Interpretation limits
+  The four Core4 endpoints evaluate the binary, un-packaged finite-assignment
+  signed sums DeltaNF (logical level 7, raw Delta=2^X). They quantify over all
+  positive blocks and the indicated n range; they are not finite-enumeration
+  substitutes. Use the corrected exponents for the three named corrected
+  endpoints. Historical formulas are retained for provenance and may differ.
+  Core4 proper-support subtraction, full-support Gamma extraction, and the
+  manuscript contraction-to-assignment bridge are not certified by these raw
+  endpoint statements or by this packaging audit.

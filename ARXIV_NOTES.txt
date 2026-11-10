@@ -1,0 +1,30 @@
+ARXIV SUBMISSION NOTES
+
+This is a standalone source-code distribution, not a complete paper
+submission. It contains no paper TeX or complete arXiv submission metadata;
+the supplied paper title and author information are recorded for citation.
+The associated paper is arXiv:2610.26814 [hep-th] (2026):
+  https://arxiv.org/abs/2610.26814
+  https://doi.org/10.48550/arXiv.2610.26814
+The public record was verified on 2026-11-10; version 1 was submitted on
+2026-10-19. The source-code repository for this republication is:
+  https://github.com/CommitionerJ/stabilizer-renyi-multientropy-lean
+Earlier paper versions may cite the previous repository address; changing
+this repository does not automatically update the paper or arXiv metadata.
+
+For a TeX/PDFLaTeX paper submission, arXiv supports accompanying code as
+ancillary material in an anc directory at the submission root. Keep all five
+project folders together so the Core4loop -> Core3loop relative dependency
+continues to work after download. Refer to the supplementary code from the
+paper and check the upload preview. The ancillary-file mechanism is not
+currently supported for PDF-only submissions.
+
+The MIT source license in this package does not replace the paper-license
+choice in arXiv's submission process. Select that separately and ensure you
+have the rights to distribute all submitted material. This package has not
+been certified as an arXiv ancillary-code deposit; the paper's arXiv record
+does not by itself archive or certify this separately distributed code.
+
+Official guidance consulted for this packaging revision:
+https://info.arxiv.org/help/ancillary_files.html
+https://info.arxiv.org/help/license/index.html
